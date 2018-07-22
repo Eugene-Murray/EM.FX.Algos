@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.FX.Algos.Common", "EM.FX.Algos.Common\EM.FX.Algos.Common.csproj", "{9D82DAD5-DB0F-4CCC-B87C-A2F14BA5750C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.FX.Algos", "EM.FX.Algos\EM.FX.Algos.csproj", "{491A7EC3-66FD-4605-AC58-DA0F3912EA92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cAlgoDll", "cAlgoDll", "{CC0AF76F-E390-49D5-9884-15B4AB374D81}"
+	ProjectSection(SolutionItems) = preProject
+		cAlgo.API.dll = cAlgo.API.dll
+		cAlgo.API.xml = cAlgo.API.xml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EM.FX.Algos.Web", "EM.FX.Algos.Web\EM.FX.Algos.Web.csproj", "{22B0BF54-F8FB-4676-BAFC-32894C4310CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EM.FX.Algos.Spotware.Connect", "EM.FX.Algos.Spotware.Connect\EM.FX.Algos.Spotware.Connect.csproj", "{7022ECA9-F7B3-4B64-BC3B-7CA98E19C459}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EM.FX.Algos.Test", "EM.FX.Algos.Test\EM.FX.Algos.Test.csproj", "{802712CB-5C04-485B-8DD6-62D80A055E54}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D82DAD5-DB0F-4CCC-B87C-A2F14BA5750C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D82DAD5-DB0F-4CCC-B87C-A2F14BA5750C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D82DAD5-DB0F-4CCC-B87C-A2F14BA5750C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D82DAD5-DB0F-4CCC-B87C-A2F14BA5750C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{491A7EC3-66FD-4605-AC58-DA0F3912EA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{491A7EC3-66FD-4605-AC58-DA0F3912EA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{491A7EC3-66FD-4605-AC58-DA0F3912EA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{491A7EC3-66FD-4605-AC58-DA0F3912EA92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22B0BF54-F8FB-4676-BAFC-32894C4310CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22B0BF54-F8FB-4676-BAFC-32894C4310CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22B0BF54-F8FB-4676-BAFC-32894C4310CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22B0BF54-F8FB-4676-BAFC-32894C4310CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7022ECA9-F7B3-4B64-BC3B-7CA98E19C459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7022ECA9-F7B3-4B64-BC3B-7CA98E19C459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7022ECA9-F7B3-4B64-BC3B-7CA98E19C459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7022ECA9-F7B3-4B64-BC3B-7CA98E19C459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{802712CB-5C04-485B-8DD6-62D80A055E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{802712CB-5C04-485B-8DD6-62D80A055E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{802712CB-5C04-485B-8DD6-62D80A055E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{802712CB-5C04-485B-8DD6-62D80A055E54}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1ADDCA30-5898-4EA1-8C53-549E1C76809F}
+	EndGlobalSection
+EndGlobal
