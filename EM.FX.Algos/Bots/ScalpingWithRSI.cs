@@ -22,6 +22,15 @@ namespace EM.FX.Algos.Bots
         [Parameter("MaxVolume", DefaultValue = 5000)]
         public int MaxVolume { get; set; }
 
+        [Parameter("MaxVolume", DefaultValue = -60)]
+        public int MaxTotalNetProfitLoss { get; set; }
+
+        [Parameter("MaxOpenPositionsForSymbol", DefaultValue = 6)]
+        public int MaxOpenPositionsForSymbol { get; set; }
+
+        [Parameter("MaxTotalVolumeInUnits", DefaultValue = 50000)]
+        public int MaxTotalVolumeInUnits { get; set; }
+
         [Parameter("UseManualStopTrade", DefaultValue = false)]
         public bool UseManualStopTrade { get; set; }
 
@@ -39,7 +48,7 @@ namespace EM.FX.Algos.Bots
 
         private RelativeStrengthIndex rsi;
         private double _equity;
-        private int noOfLivePositions = 4;
+        private int noOfLivePositions = 0;
         private int pips = 2;
 
         protected override void OnStart()
@@ -69,34 +78,44 @@ namespace EM.FX.Algos.Bots
             }
 
             // Open new positions
-            if (Positions.Count < noOfLivePositions)
+            var totalNetProfit = Positions.FindAll(Label).Select(p => p.NetProfit).ToList().Sum();
+            var totalVolumeInUnits = Positions.FindAll(Label).Select(p => p.VolumeInUnits).Sum();
+            var openPositions = Positions.FindAll(Label).Length;
+
+            if (Positions.FindAll(Label).Length < noOfLivePositions 
+                && totalNetProfit > MaxTotalNetProfitLoss 
+                && openPositions < MaxOpenPositionsForSymbol
+                && totalVolumeInUnits < MaxTotalVolumeInUnits)
             {
                 MakeBuySellOrder(Volume);
             }
 
             // Update buy count / update sell count
-            int buyCount = 0;
-            int sellCount = 0;
-            foreach (var position in Positions)
-            {
-                if (position.TradeType == TradeType.Buy)
-                    buyCount++;
-                if (position.TradeType == TradeType.Sell)
-                    sellCount++;
-            }
+            //int buyCount = 0;
+            //int sellCount = 0;
+            //foreach (var position in Positions.FindAll(Label))
+            //{
+            //    if (position.TradeType == TradeType.Buy)
+            //        buyCount++;
+            //    if (position.TradeType == TradeType.Sell)
+            //        sellCount++;
+            //}
 
             // If no positions - up the volume and pip size (why??)
-            if (buyCount == 0 || sellCount == 0)
-            {
-                if (Volume < MaxVolume)
-                {
-                    Volume += 1000;
-                }
-                noOfLivePositions += 2;
-                pips++;
+            //if (buyCount == 0 || sellCount == 0)
+            //{
+            //    if (Volume < MaxVolume)
+            //    {
+            //        Volume += 1000;
+            //    }
+            //    //noOfLivePositions += 2;
+            //    pips++;
 
-                MakeBuySellOrder(Volume);
-            }
+            //    MakeBuySellOrder(Volume);
+            //}
+
+            // TODO: if can make buy order - rsi, count of buy < max buy, buy volume < maxvolume, is buy in loss
+            // TODO: if can make sell order
 
             // Close out and start again if account high ?????
             if (Account.Equity > _equity + Account.Equity / 100)
@@ -107,7 +126,7 @@ namespace EM.FX.Algos.Bots
                 }
                 _equity = Account.Equity;
                 Volume = 1000;
-                noOfLivePositions = 4;
+                //noOfLivePositions = 4;
                 pips = 2;
 
                 MakeBuySellOrder(Volume);
